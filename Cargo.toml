@@ -1,0 +1,23 @@
+[package]
+name = "rs-png-optimizer"
+version = "0.1.0"
+edition = "2021"
+authors = ["CM-IV <chuck@civdev.xyz>"]
+description = "A PNG optimizer implemented using the oxipng crate"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+
+[dependencies]
+color-eyre = "0.6.2"
+clap = { version = "4.0", features = ["derive"] }
+oxipng = "8.0.0"
+
+# optimize for reasonable compile speed
+[profile.release]
+strip = "symbols"
+lto = "thin"
+opt-level = 3
+debug = 0
+overflow-checks = false
+panic = "abort"
